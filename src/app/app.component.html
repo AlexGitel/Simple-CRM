@@ -1,6 +1,19 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Simple CRM</span>
-</mat-toolbar>
+<mat-drawer-container class="container" autosize>
+  <mat-drawer class="logo-container" [opened]="true" #drawer mode="side">
+    <div class="logo">
+      Platz für LOGO
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Simple CRM</span>
+    </mat-toolbar>
+
+  </div>
+
+</mat-drawer-container>
