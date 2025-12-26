@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    flex-direction: column;
+
+    .names,
+    .location {
+        display: flex;
+        gap: 16px;
+    }
+
+    .mt-8 {
+        margin-top: 8px;
+    }
+
+}
