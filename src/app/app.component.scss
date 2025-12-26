@@ -11,21 +11,26 @@
     }
 
     .menu-items {
-        list-style-type: none;
         margin: 0;
         padding: 0;
 
-        li {
+        a {
             padding: 0 16px;
             height: 48px;
             display: flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
+            text-decoration: none;
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.06);
+                text-decoration: underline;
             }
         }
     }
+}
+
+.router-container {
+    padding: 16px 0 0 48px;
 }
