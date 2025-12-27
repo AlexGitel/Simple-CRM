@@ -46,7 +46,6 @@ export class DialogAddUserComponent {
 
     addDoc(collRef, this.user.toJSON())
       .then(() => {
-        console.log('User successfully saved', collRef);
         this.loading = false;
       })
       .catch(err => {
@@ -56,6 +55,6 @@ export class DialogAddUserComponent {
   }
 
   closeDialog(){
-    
+    this.dialogRef.close();
   }
 }
