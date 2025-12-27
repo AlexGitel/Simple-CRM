@@ -1,5 +1,42 @@
-   .addButton {
-       position: absolute;
-       bottom: 24px;
-       right: 24px;
-   }
+.addButton {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+}
+
+.user-row {
+    margin: 16px;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1.2px solid rgba(0, 0, 0, 0.4);
+
+        &:first-child {
+            cursor: unset;
+
+            &:hover {
+                background-color: unset;
+            }
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    th {
+        text-align: start;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    td {
+        height: 48px;
+    }
+
+}
