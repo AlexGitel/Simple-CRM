@@ -4,6 +4,12 @@ import { Firestore, doc, docData} from '@angular/fire/firestore';
 import { MatCardModule } from '@angular/material/card';
 import { User } from '../../models/user.class';
 import { ActivatedRoute } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,7 +17,10 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     MatCardModule,
     CommonModule,
-    DatePipe
+    DatePipe,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss'
@@ -21,6 +30,7 @@ export class UserDetailComponent implements OnInit{
   firestore: Firestore = inject(Firestore);
 
   route = inject(ActivatedRoute);
+  dialog = inject(MatDialog);
 
   userIdFromUrl: string | null = null;
   userData: User | null = null;
@@ -43,5 +53,14 @@ export class UserDetailComponent implements OnInit{
       this.userData = new User(dbData);
       console.log('User loaded:', this.userData);
     });
+  }
+
+  editUserDetails(){
+    let dialog = this.dialog.open(DialogEditUserComponent);
+    dialog.componentInstance.user = this.userData;
+  }
+
+  editAddress(){
+ this.dialog.open(DialogEditAddressComponent);
   }
 }
