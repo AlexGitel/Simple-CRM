@@ -3,25 +3,25 @@
         <tr>
             <th>Name</th>
             <th>Birth Date</th>
+            <th>E-Mail</th>
             <th>Street</th>
             <th>ZipCode</th>
             <th>City</th>
         </tr>
-        @for (item of allUsers$ | async; track item) {
-        <tr>
-            <td>{{ item.firstName }} {{ item.lastName }}</td>
-            <td>{{ item.birthDate }}</td>
-            <td>{{ item.street }}</td>
-            <td>{{ item.zipCode }}</td>
-            <td>{{ item.city }}</td>
+        @for (currentUser of allUsers$ | async; track currentUser.id) {
+        <tr [routerLink]="['/user/' + currentUser.id]">
+            <td>{{ currentUser.firstName }} {{ currentUser.lastName }}</td>
+            <td>{{ currentUser?.birthDate | date:'dd.MM.yyyy'}}</td>
+            <td>{{ currentUser.email }}</td>
+            <td>{{ currentUser.street }}</td>
+            <td>{{ currentUser.zipCode }}</td>
+            <td>{{ currentUser.city }}</td>
         </tr>
         } @empty {
         <tr>
             <td colspan="5">Keine User vorhanden</td>
         </tr>
         }
-
-
     </table>
 </mat-card>
 

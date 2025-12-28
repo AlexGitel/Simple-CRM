@@ -32,7 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class DialogAddUserComponent {
   firestore: Firestore = inject(Firestore);
-  constructor(private dialogRef: MatDialogRef<DialogAddUserComponent>) { }
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
 
   user = new User();
   timestamp: Date = new Date();
@@ -51,10 +51,6 @@ export class DialogAddUserComponent {
       .catch(err => {
         console.error('Error by saving user', err);
     }); 
-    this.dialogRef.close();
-  }
-
-  closeDialog(){
     this.dialogRef.close();
   }
 }

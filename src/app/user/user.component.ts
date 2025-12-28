@@ -9,18 +9,20 @@ import { MatCardModule } from '@angular/material/card';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { User } from '../../models/user.class';
 import { Observable } from 'rxjs';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [ 
+  imports: [
     CommonModule,
     AsyncPipe,
-    MatButtonModule, 
-    MatIconModule, 
+    MatButtonModule,
+    MatIconModule,
     MatTooltipModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    RouterLink
+],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
@@ -37,8 +39,13 @@ export class UserComponent {
     this.allUsers$ = collectionData(usersRef, {
       idField: 'id'
     }) as Observable<User[]>;
-  }
 
+    // this.allUsers$.subscribe(users => {
+    //   users.forEach(user => { 
+    //     console.log(user);
+    //   });
+    // }); 
+  }
 
   openDialog(){
     this.dialog.open(DialogAddUserComponent);
