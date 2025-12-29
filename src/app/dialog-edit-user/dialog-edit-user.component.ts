@@ -57,7 +57,7 @@ export class DialogEditUserComponent implements OnInit {
         : this.user.birthDate;
 
       const userDocRef = doc(this.firestore, 'users', this.user.id);
-      console.log('Saving user:', this.user);
+
       await updateDoc(userDocRef, this.user.toJSON());
 
       this.dialogRef.close(true);

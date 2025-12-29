@@ -51,21 +51,20 @@ export class UserDetailComponent implements OnInit{
     docData(userDocRef, { idField: 'id' })
     .subscribe((dbData: any) => {
       this.userData = new User(dbData);
-      console.log('User loaded:', this.userData);
     });
   }
 
   editUserDetails(){
     if (!this.userData) return;
     const editedDialog = this.dialog.open(DialogEditUserComponent);
-    // editedDialog.componentInstance.user = new User(this.userData.toJSON());
+    // copy of this.userData, included id
     editedDialog.componentInstance.user = new User({...this.userData });
   }
 
   editAddress(){
      if (!this.userData) return;
     const editedAddress = this.dialog.open(DialogEditAddressComponent);
-    //editedAddress.componentInstance.user = new User(this.userData.toJSON());
+     // copy of this.userData, included id
     editedAddress.componentInstance.user = new User({...this.userData });
   }
 }
