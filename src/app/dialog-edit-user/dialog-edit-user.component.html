@@ -1,4 +1,5 @@
 <div class="main-container">
+    <mat-spinner *ngIf="loading"></mat-spinner>
 
     <h1 mat-dialog-title>Edit user details</h1>
     <mat-dialog-content>
@@ -24,18 +25,15 @@
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="full-width mt-8">
                 <mat-label>E-Mail</mat-label>
                 <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="">
             </mat-form-field>
         </div>
 
-
-
-
-        <!-- <div mat-dialog-actions>
+        <div mat-dialog-actions>
             <button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
             <button [disabled]="loading" mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
-        </div> -->
+        </div>
     </mat-dialog-content>
 </div>

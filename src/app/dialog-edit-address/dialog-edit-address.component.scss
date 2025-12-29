@@ -1,0 +1,33 @@
+ .main-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+
+ mat-spinner {
+     position: absolute;
+     z-index: 5;
+ }
+
+ h1 {
+     width: 100%;
+     padding: 0 24px;
+     margin: 8px;
+ }
+
+ mat-dialog-content {
+     .full-width {
+         width: 100%;
+     }
+
+     .names,
+     .location {
+         display: flex;
+         gap: 16px;
+     }
+
+     .mt-8 {
+         margin-top: 8px;
+     }
+ }
