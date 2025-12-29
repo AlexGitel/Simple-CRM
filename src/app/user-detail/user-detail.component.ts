@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DatePipe, CommonModule } from '@angular/common';
-import { Firestore, doc, docData} from '@angular/fire/firestore';
+import { Firestore, doc, updateDoc, docData} from '@angular/fire/firestore';
 import { MatCardModule } from '@angular/material/card';
 import { User } from '../../models/user.class';
 import { ActivatedRoute } from '@angular/router';
@@ -58,12 +58,14 @@ export class UserDetailComponent implements OnInit{
   editUserDetails(){
     if (!this.userData) return;
     const editedDialog = this.dialog.open(DialogEditUserComponent);
-    editedDialog.componentInstance.user = this.userData;
+    // editedDialog.componentInstance.user = new User(this.userData.toJSON());
+    editedDialog.componentInstance.user = new User({...this.userData });
   }
 
   editAddress(){
      if (!this.userData) return;
-    const editedDialog = this.dialog.open(DialogEditAddressComponent);
-    editedDialog.componentInstance.user = this.userData;
+    const editedAddress = this.dialog.open(DialogEditAddressComponent);
+    //editedAddress.componentInstance.user = new User(this.userData.toJSON());
+    editedAddress.componentInstance.user = new User({...this.userData });
   }
 }

@@ -9,6 +9,7 @@ import { User } from '../../models/user.class';
 import { FormsModule } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Firestore, doc, updateDoc, collection, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dialog-edit-address',
@@ -30,12 +31,29 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './dialog-edit-address.component.scss'
 })
 export class DialogEditAddressComponent {
-   loading = false;
+  loading = false;
   user!: User;
   timestamp = Date;
   dialogRef = inject(MatDialogRef);
+  firestore: Firestore = inject(Firestore);
 
-  saveUser(){
+   async saveUpdatedAddress() {
+    if (!this.user?.id) {
+      console.error('User ID missing');
+      return;
+    }
+    this.loading = true;
 
+    try {
+      const userDocRef = doc(this.firestore, 'users', this.user.id);
+   
+      await updateDoc(userDocRef, this.user.toJSON());
+
+      this.dialogRef.close(true);
+    } catch (error) {
+      console.error('Update failed:', error);
+    } finally {
+      this.loading = false;
+    }
   }
 }
